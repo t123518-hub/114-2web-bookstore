@@ -1,0 +1,27 @@
+留頁書房 — 發想與準備
+
+【品牌發想】
+名稱：留頁書房（Lioupe Page Bookstore）
+定位：二手書店連鎖品牌，以「讓被闔上的書，再次被翻開」為品牌理念
+風格：溫暖、知識感、文青風格
+
+【配色方案】
+主色：墨綠色（#2F3A1F）— 象徵知識與自然
+輔助：暖米色（#E8E2D3）— 紙張質感
+點綴：暖金色（#BFA46A）— 溫暖優雅
+其他：Mist #B8BDB0、Ink #22231F
+
+【字體選擇】
+標題：Noto Serif TC（宋體風格）
+內文：Noto Sans TC（無襯線，現代感）
+特色：Ma Shan Zheng（手寫風格，用於特殊標題）
+
+【資料庫】
+使用單一 Excel 檔案（bookstore.xlsx）儲存所有資料
+分頁：users、books、members、orders
+包裝：xlsx npm
+
+【技術架構】
+前端：純 HTML + CSS + Vanilla JS
+後端：Node.js + Express（port 3000）
+認證：bcryptjs 密碼雜湊 + express-session

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>緊急應變流程 — 留頁書房</title>
+  <style>
+    :root { --olive: #2F3A1F; --paper: #E8E2D3; --warm-gold: #BFA46A; --mist: #B8BDB0; --ink: #22231F; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'PingFang TC', 'Microsoft JhengHei', 'Heiti TC', serif; background: var(--paper); color: var(--ink); line-height: 1.8; }
+    .page { max-width: 800px; margin: 0 auto; padding: 40px 32px; background: #fff; min-height: 100vh; }
+    .header { display: flex; align-items: center; gap: 16px; margin-bottom: 36px; padding-bottom: 16px; border-bottom: 2px solid var(--olive); }
+    .header-icon { width: 48px; height: 48px; background: var(--olive); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--warm-gold); flex-shrink: 0; }
+    .brand { font-size: 0.8rem; color: var(--mist); letter-spacing: 0.15em; }
+    .doc-title { font-size: 1.5rem; color: var(--olive); font-weight: 400; letter-spacing: 0.1em; margin-top: 4px; }
+    h2 { font-size: 1.05rem; color: var(--olive); margin: 32px 0 14px; padding-left: 12px; border-left: 4px solid var(--warm-gold); letter-spacing: 0.05em; }
+    h3 { font-size: 0.95rem; color: var(--olive); margin: 20px 0 10px; }
+    p { font-size: 0.88rem; color: var(--ink); margin-bottom: 10px; }
+    .step { background: rgba(47,58,31,0.05); border: 1px solid rgba(47,58,31,0.12); border-radius: 4px; padding: 16px 20px; margin: 14px 0; }
+    .step-num { display: inline-block; width: 26px; height: 26px; background: var(--olive); color: var(--warm-gold); border-radius: 50%; text-align: center; line-height: 26px; font-size: 0.8rem; margin-right: 10px; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.82rem; }
+    th { background: var(--olive); color: var(--warm-gold); padding: 10px 14px; text-align: left; font-weight: 400; }
+    td { padding: 10px 14px; border-bottom: 1px solid rgba(47,58,31,0.15); vertical-align: top; }
+    tr:nth-child(even) td { background: rgba(47,58,31,0.04); }
+    .warning { background: rgba(191,164,106,0.15); border: 2px solid var(--warm-gold); border-radius: 4px; padding: 14px 18px; margin: 16px 0; }
+    .warning p { color: var(--olive); font-size: 0.88rem; margin-bottom: 0; }
+    .footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid rgba(47,58,31,0.2); text-align: center; font-size: 0.75rem; color: var(--mist); }
+    @media print { body { background: #fff; } .page { padding: 0; max-width: 100%; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <div class="header-icon">&#128644;</div>
+      <div>
+        <div class="brand">留頁書房 · 訓練文件</div>
+        <h1 class="doc-title">緊急應變流程</h1>
+      </div>
+    </div>
+
+    <h2>一、火災應變</h2>
+    <div class="step"><strong><span class="step-num">1</span>發現火災</strong>：立即按下最近火警按鈕，撥打 119，並以最快速度通知店內所有人</div>
+    <div class="step"><strong><span class="step-num">2</span>初期滅火</strong>：若火勢微小，使用 ABC 乾粉滅火器對準火源根部掃射</div>
+    <div class="step"><strong><span class="step-num">3</span>疏散人員</strong>：引導顧客從主要出口冷靜撤離，勿使用電梯</div>
+    <div class="step"><strong><span class="step-num">4</span>關閉電源</strong>：疏散完成後，關閉電源總開關（配電箱位於入口右側牆角）</div>
+    <div class="step"><strong><span class="step-num">5</span>集合點名</strong>：全員至「公園路人行道」集合，由主管清點人數</div>
+
+    <h2>二、地震應變</h2>
+    <div class="step"><strong><span class="step-num">1</span>地震发生时</strong>：立即躲在桌下或梁柱旁，保護頭頸，遠離書架與玻璃</div>
+    <div class="step"><strong><span class="step-num">2</span>主震停止後</strong>：先檢查室內人員安全，再檢查建築物結構是否受損</div>
+    <div class="step"><strong><span class="step-num">3</span>評估營運</strong>：若結構安全，逐步恢復營運；若有疑慮，立即疏散</div>
+    <div class="step"><strong><span class="step-num">4</span>通報總部</strong>：致電總部（02-XXXX-XXXX）報告狀況</div>
+
+    <h2>三、電力中断</h2>
+    <table>
+      <tr><th>狀況</th><th>處理方式</th></tr>
+      <tr><td>短暫跳電（5分鐘內）</td><td>安撫顧客，確認 POS 系統自動恢復運作</td></tr>
+      <tr><td>長時間斷電</td><td>停止結帳作業，請顧客稍候或改至其他分店消費</td></tr>
+      <tr><td>UPS 供電中</td><td>POS 系統供電約 30 分鐘，優先完成已挑選商品的結帳</td></tr>
+      <tr><td>发电机启动</td><td>確認發電機運作後，逐步恢復照明與系統</td></tr>
+    </table>
+
+    <h2>四、系統故障（POS / 會員系統）</h2>
+    <div class="step"><strong><span class="step-num">1</span>立即通報</strong>：撥打總部資訊部電話（02-XXXX-XXXX）</div>
+    <div class="step"><strong><span class="step-num">2</span>手動作業</strong>：開啟「人工收據簿」，以手寫收據記錄每一筆交易</div>
+    <div class="step"><strong><span class="step-num">3</span>顧客溝通</strong>：請顧客稍候，或提供名片請其日後至其他分店取書</div>
+    <div class="step"><strong><span class="step-num">4</span>事後補登</strong>：系統恢復後，於當日補登所有手寫交易資料</div>
+
+    <h2>五、搶劫 / 暴力事件</h2>
+    <div class="warning">
+      <p><strong>⚠ 最重要原則：</strong>人員安全優先，金錢損失由保險承擔。請保持冷靜，絕不與歹徒正面衝突。</p>
+    </div>
+    <div class="step"><strong><span class="step-num">1</span>確保安全</strong>：雙手放開，避免激怒歹徒</div>
+    <div class="step"><strong><span class="step-num">2</span>暗中報警</strong>：按下緊急按鈕（結帳檯下方），系統將自動通報</div>
+    <div class="step"><strong><span class="step-num">3</span>記錄特徵</strong>：待歹徒離開後，，立即記錄其外貌特徵與穿著</div>
+    <div class="step"><strong><span class="step-num">4</span>封鎖現場</strong>：待警方抵達前，不要移動任何物品</div>
+
+    <h2>六、漏水 / 防水應變</h2>
+    <div class="step"><strong><span class="step-num">1</span>切斷電源</strong>：先關閉附近電源，防止觸電</div>
+    <div class="step"><strong><span class="step-num">2</span>移動書籍</strong>：將低處書籍移至高處，優先搶救高單價書籍</div>
+    <div class="step"><strong><span class="step-num">3</span>引流止損</strong>：以水桶、抹布引流，並放置「小心地滑」警示牌</div>
+    <div class="step"><strong><span class="step-num">4</span>通報大樓管委會</strong>：確認漏水源头並通知修復</div>
+
+    <h2>七、緊急連絡電話</h2>
+    <table>
+      <tr><th>單位</th><th>電話</th></tr>
+      <tr><td>消防局 / 救護車</td><td>119</td></tr>
+      <tr><td>警察局</td><td>110</td></tr>
+      <tr><td>留頁書房總部</td><td>02-XXXX-XXXX</td></tr>
+      <tr><td>資訊部（系統問題）</td><td>02-XXXX-XXXX</td></tr>
+      <tr><td>區主管（緊急支援）</td><td>0912-XXX-XXX</td></tr>
+    </table>
+
+    <div class="footer">留頁書房 · 緊急應變流程手冊 · 內部訓練文件<br>每年演練一次，全員須熟悉以上流程</div>
+  </div>
+</body>
+</html>

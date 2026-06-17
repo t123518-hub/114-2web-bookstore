@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>經營分析 — 留頁書房</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@300;400&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    .dashboard { padding: 50px 0; }
+    .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 18px; margin-bottom: 30px; }
+    .kpi-card { background: var(--paper-light); border: 1px solid var(--line); padding: 22px; border-radius: 3px; text-align: center; }
+    .kpi-val { font-size: 1.8rem; color: var(--olive); font-family: 'Noto Serif TC', serif; }
+    .kpi-lbl { color: var(--mist); font-size: 0.88rem; margin-top: 6px; }
+    .kpi-chg { font-size: 0.8rem; margin-top: 6px; }
+    .up { color: #5D8A3E; }
+    .down { color: #A65D3E; }
+    .charts-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 18px; margin-bottom: 25px; }
+    .chart-card { background: var(--paper-light); border: 1px solid var(--line); padding: 22px; border-radius: 3px; }
+    .chart-card h3 { color: var(--olive); font-size: 1rem; margin-bottom: 14px; letter-spacing: 0.03em; }
+    .chart-container { height: 200px; position: relative; }
+    .table-card { background: var(--paper-light); border: 1px solid var(--line); padding: 22px; border-radius: 3px; margin-bottom: 18px; overflow-x: auto; }
+    .table-card h3 { color: var(--olive); font-size: 1rem; margin-bottom: 14px; letter-spacing: 0.03em; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--line); font-size: 0.9rem; }
+    th { color: var(--olive); font-weight: 500; background: transparent; }
+    tr:hover { background: rgba(47,58,31,0.03); }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <h1 class="logo">留頁書房</h1>
+      <ul class="nav-links">
+        <li><a href="/">回首頁</a></li>
+        <li><a href="/theme1_brand_site/index.html">品牌形象</a></li>
+        <li><a href="/theme2_poster/index.html">活動消息</a></li>
+        <li><a href="/theme3_franchise_deck/index.html">加盟計畫</a></li>
+        <li><a href="/theme4_training_video/index.html">訓練課程</a></li>
+        <li><a href="/theme6_pos_app/index.html">銷售系統</a></li>
+        <li><a href="/admin/index.html" class="btn-login">管理後台</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero"><div class="container"><h2>經營分析儀表板</h2><p style="opacity:0.7;font-style:italic;">數據驅動，讓管理更有溫度</p></div></header>
+
+  <main class="container dashboard">
+    <div class="kpi-row">
+      <div class="kpi-card"><div class="kpi-val">NT$ 892,400</div><div class="kpi-lbl">本月營收</div><div class="kpi-chg up">&#9650; 8.2% 較上月</div></div>
+      <div class="kpi-card"><div class="kpi-val">2,156</div><div class="kpi-lbl">本月訂單數</div><div class="kpi-chg up">&#9650; 5.7% 較上月</div></div>
+      <div class="kpi-card"><div class="kpi-val">4,320</div><div class="kpi-lbl">本月書籍流通</div><div class="kpi-chg up">&#9650; 11.3% 較上月</div></div>
+      <div class="kpi-card"><div class="kpi-val">1,245</div><div class="kpi-lbl">會員總數</div><div class="kpi-chg up">&#9650; 3.8% 較上月</div></div>
+    </div>
+
+    <div class="charts-row">
+      <div class="chart-card"><h3>月營收趨勢（近 6 個月）</h3><div class="chart-container"><canvas id="revenueChart"></canvas></div></div>
+      <div class="chart-card"><h3>書籍類別銷售佔比</h3><div class="chart-container"><canvas id="categoryChart"></canvas></div></div>
+    </div>
+    <div class="charts-row">
+      <div class="chart-card"><h3>各店營收比較</h3><div class="chart-container"><canvas id="storeChart"></canvas></div></div>
+      <div class="chart-card"><h3>書籍流通量趨勢</h3><div class="chart-container"><canvas id="flowChart"></canvas></div></div>
+    </div>
+
+    <div class="table-card">
+      <h3>各店營收概況</h3>
+      <table>
+        <thead><tr><th>分店</th><th>本月營收</th><th>上月營收</th><th>月增率</th><th>訂單數</th><th>平均客單價</th></tr></thead>
+        <tbody>
+          <tr><td>台北新生店</td><td>NT$ 324,500</td><td>NT$ 298,200</td><td class="up">+8.8%</td><td>1,045</td><td>NT$ 310</td></tr>
+          <tr><td>台北安和店</td><td>NT$ 267,800</td><td>NT$ 248,500</td><td class="up">+7.8%</td><td>862</td><td>NT$ 311</td></tr>
+          <tr><td>新竹竹塹店</td><td>NT$ 300,100</td><td>NT$ 285,700</td><td class="up">+5.0%</td><td>967</td><td>NT$ 310</td></tr>
+          <tr><td>台南慢讀店</td><td>NT$ 185,200</td><td>NT$ 196,300</td><td class="down">-5.7%</td><td>597</td><td>NT$ 310</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-card">
+      <h3>熱銷書籍 TOP 5</h3>
+      <table>
+        <thead><tr><th>排名</th><th>書名</th><th>作者</th><th>分類</th><th>本月銷量</th><th>營收貢獻</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>原子習慣</td><td>James Clear</td><td>自我成長</td><td>67本</td><td>NT$ 20,100</td></tr>
+          <tr><td>2</td><td>所有明亮的悲傷</td><td>安卓・亞歷斯・金</td><td>文學</td><td>54本</td><td>NT$ 16,200</td></tr>
+          <tr><td>3</td><td>深夜食堂</td><td>安倍夜郎</td><td>漫畫</td><td>48本</td><td>NT$ 14,400</td></tr>
+          <tr><td>4</td><td>鼠疫</td><td>卡繆</td><td>文學</td><td>42本</td><td>NT$ 12,600</td></tr>
+          <tr><td>5</td><td>柳林風聲</td><td>肯尼斯・葛拉罕</td><td>童書</td><td>38本</td><td>NT$ 11,400</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer class="footer"><div class="container"><p>留頁書房 &mdash; 讓被闔上的書，再次被翻開。</p></div></footer>
+
+  <script>
+    const olive = '#2F3A1F';
+    const oliveLight = '#3D4A2E';
+    const gold = '#BFA46A';
+    const mist = '#B8BDB0';
+    const paper = '#E8E2D3';
+
+    const chartDefaults = {
+      color: olive,
+      borderColor: 'rgba(47,58,31,0.15)',
+      font: { family: "'Noto Sans TC', 'PingFang TC', sans-serif" }
+    };
+
+    // 月營收趨勢（折線圖）
+    new Chart(document.getElementById('revenueChart'), {
+      type: 'line',
+      data: {
+        labels: ['1月', '2月', '3月', '4月', '5月', '6月'],
+        datasets: [{
+          label: '月營收',
+          data: [712000, 785000, 823000, 798000, 856000, 892400],
+          borderColor: olive,
+          backgroundColor: 'rgba(47,58,31,0.08)',
+          fill: true,
+          tension: 0.4,
+          pointBackgroundColor: olive,
+          pointRadius: 5,
+          pointHoverRadius: 7
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { grid: { color: 'rgba(47,58,31,0.08)' }, ticks: { color: mist } },
+          y: { grid: { color: 'rgba(47,58,31,0.08)' }, ticks: { color: mist, callback: v => 'NT$' + (v/1000) + 'k' } }
+        }
+      }
+    });
+
+    // 書籍類別佔比（圓餅圖）
+    new Chart(document.getElementById('categoryChart'), {
+      type: 'doughnut',
+      data: {
+        labels: ['文學', '自我成長', '生活風格', '童書', '漫畫', '其他'],
+        datasets: [{
+          data: [28, 22, 18, 14, 10, 8],
+          backgroundColor: [olive, oliveLight, gold, mist, '#8A9B6E', '#C4B89A'],
+          borderWidth: 2,
+          borderColor: paper
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'right', labels: { color: olive, padding: 12, font: { size: 12 } } }
+        }
+      }
+    });
+
+    // 各店營收（橫條圖）
+    new Chart(document.getElementById('storeChart'), {
+      type: 'bar',
+      data: {
+        labels: ['台北新生店', '台北安和店', '新竹竹塹店', '台南慢讀店'],
+        datasets: [{
+          label: '本月營收',
+          data: [324500, 267800, 300100, 185200],
+          backgroundColor: [olive, oliveLight, gold, mist],
+          borderRadius: 3
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { grid: { color: 'rgba(47,58,31,0.08)' }, ticks: { color: mist, callback: v => 'NT$' + (v/1000) + 'k' } },
+          y: { grid: { display: false }, ticks: { color: olive } }
+        }
+      }
+    });
+
+    // 書籍流通趨勢（柱狀圖）
+    new Chart(document.getElementById('flowChart'), {
+      type: 'bar',
+      data: {
+        labels: ['1月', '2月', '3月', '4月', '5月', '6月'],
+        datasets: [{
+          label: '流通量',
+          data: [3100, 3650, 3890, 3720, 4010, 4320],
+          backgroundColor: 'rgba(191,164,106,0.7)',
+          borderColor: gold,
+          borderWidth: 1,
+          borderRadius: 3
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: mist } },
+          y: { grid: { color: 'rgba(47,58,31,0.08)' }, ticks: { color: mist } }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

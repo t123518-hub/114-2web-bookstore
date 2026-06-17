@@ -1,0 +1,15 @@
+留頁書房銷售系統 — 備忘
+
+【資料夾內容】
+- index.html : Web POS 系統
+- 備忘/       : 本資料夾
+
+【功能模組】
+- 登入驗證（POST /api/auth/login）
+- 書籍清單讀取（GET /api/books）
+- 購物車管理（前端 JS）
+- 結帳（POST /api/pos/checkout）
+
+【技術說明】
+- Session-based 登入
+- Excel 資料庫（bookstore.xlsx）

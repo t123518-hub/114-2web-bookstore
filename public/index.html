@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>留頁書房 — 讓被闔上的書，再次被翻開。</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    .hero .quote { font-size: 1.1rem; color: var(--warm-gold); margin-bottom: 25px; font-style: italic; letter-spacing: 0.1em; }
+    .about { background: var(--paper-light); }
+    .about-content { max-width: 700px; margin: 0 auto; text-align: center; }
+    .about-content p { font-size: 1.05rem; color: var(--olive); margin-bottom: 15px; }
+    .divider { width: 60px; height: 1px; background: var(--warm-gold); margin: 30px auto; }
+    .voice-btn { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; border-radius: 50%; background: var(--olive); color: #fff; border: none; font-size: 1.5rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 9999; transition: all 0.3s; }
+    .voice-btn:hover { background: var(--olive-dark); transform: scale(1.1); }
+    .voice-btn.playing { background: var(--warm-gold); animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.15);} }
+    .voice-panel { position: fixed; bottom: 100px; right: 30px; background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 20px; width: 300px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); z-index: 9999; display: none; }
+    .voice-panel.show { display: block; }
+    .voice-panel h4 { margin: 0 0 10px; color: var(--olive); font-size: 1rem; }
+    .voice-panel p { margin: 0 0 15px; font-size: 0.85rem; color: var(--mist); }
+    .voice-speed { display: flex; gap: 10px; align-items: center; margin-bottom: 15px; }
+    .voice-speed label { font-size: 0.85rem; color: var(--olive); }
+    .voice-speed select { flex: 1; padding: 5px; border: 1px solid var(--line); border-radius: 3px; }
+    .voice-close { width: 100%; padding: 8px; background: var(--olive); color: #fff; border: none; border-radius: 3px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <h1 class="logo">留頁書房</h1>
+      <ul class="nav-links">
+        <li><a href="#home">首頁</a></li>
+        <li><a href="/theme1_brand_site/index.html">品牌形象</a></li>
+        <li><a href="/theme2_poster/index.html">活動消息</a></li>
+        <li><a href="/theme3_franchise_deck/index.html">加盟計畫</a></li>
+        <li><a href="/theme4_training_video/index.html">訓練課程</a></li>
+        <li><a href="/theme5_dashboard/index.html">經營分析</a></li>
+        <li><a href="/theme6_pos_app/index.html">銷售系統</a></li>
+        <li><a href="/admin/index.html" class="btn-login">管理後台</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="container">
+      <h2>讓被闔上的書，再次被翻開。</h2>
+      <p class="quote">一本書的下一位讀者，正在路上。</p>
+      <p>留頁書房成立於 2023 年，提供二手書買賣、舊書收購、書籍寄賣與交換服務。我們相信，每一本書都值得被再讀一次。</p>
+      <div class="hero-stats">
+        <div class="stat"><span class="num">8,500+</span><span class="label">流通書籍</span></div>
+        <div class="stat"><span class="num">3</span><span class="label">服務據點</span></div>
+        <div class="stat"><span class="num">1,200+</span><span class="label">會員人數</span></div>
+        <div class="stat"><span class="num">2.3噸</span><span class="label">紙張減碳</span></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="about">
+    <div class="container">
+      <h2>關於留頁</h2>
+      <p class="section-sub">讓文字不在櫥櫃裡沉默</p>
+      <div class="divider"></div>
+      <div class="about-content">
+        <p>留頁書房是新型態的二手書流通平台，提供書籍買賣、寄賣、交換服務，並定期舉辦閱讀講座、主題書展，期盼成為社區的寧靜閱讀角落。</p>
+        <p>在這裡，每一本書都有第二次被翻閱的機會，每一位讀者都能找到心靈的歸屬。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="container">
+      <h2>我們的服務</h2>
+      <p class="section-sub">從選書到閱讀，我們陪伴每一個環節</p>
+      <div class="feature-grid">
+        <div class="feature-card"><h3>二手書販售</h3><p>精選各類二手書籍，價格實惠，每一本都經過細心整理與推薦。</p></div>
+        <div class="feature-card"><h3>舊書收購</h3><p>專業估價、合理收購，讓您的藏書找到下一位知音。</p></div>
+        <div class="feature-card"><h3>書籍寄賣</h3><p>代售書籍，收取合理服務費用，讓書籍持續流通。</p></div>
+        <div class="feature-card"><h3>書籍交換</h3><p>會員間書籍交換，以書會友，豐富閱讀生活。</p></div>
+        <div class="feature-card"><h3>主題書展</h3><p>定期策劃主題書展，探索多元閱讀可能性。</p></div>
+        <div class="feature-card"><h3>閱讀講座</h3><p>舉辦作者座談、讀書會，推動深度閱讀文化。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="themes">
+    <div class="container">
+      <h2>網站入口導覽</h2>
+      <p class="section-sub">網站完整功能一覽</p>
+      <div class="theme-grid">
+        <a href="/theme1_brand_site/index.html" class="theme-card"><h3>品牌形象</h3><p>完整品牌視覺與核心理念呈現</p></a>
+        <a href="/theme2_poster/index.html" class="theme-card"><h3>活動消息</h3><p>書展資訊與行銷海報展示</p></a>
+        <a href="/theme3_franchise_deck/index.html" class="theme-card"><h3>加盟計畫</h3><p>創業加盟招商簡報</p></a>
+        <a href="/theme4_training_video/index.html" class="theme-card"><h3>訓練課程</h3><p>教育訓練影片與技術文件</p></a>
+        <a href="/theme5_dashboard/index.html" class="theme-card"><h3>經營分析</h3><p>數據視覺化經營儀表板</p></a>
+        <a href="/theme6_pos_app/index.html" class="theme-card"><h3>銷售系統</h3><p>POS 銷售終端操作介面</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="memo-section" style="background:var(--cream);padding:60px 0;">
+    <div class="container">
+      <h2>備忘資料</h2>
+      <p class="section-sub">開發過程記錄與參考資源</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:30px;">
+        <a href="/theme1_brand_site/備忘/1_發想與準備.txt" download style="background:#fff;border:1px solid var(--line);border-radius:3px;padding:25px;text-decoration:none;color:var(--olive-dark);">
+          <h4 style="margin:0 0 10px;color:var(--olive);">&#128221; 發想與準備</h4>
+          <p style="margin:0;font-size:0.85rem;color:var(--mist);">專案發想階段的規劃與準備文件</p>
+        </a>
+        <a href="/theme1_brand_site/備忘/2_AI對話紀錄.md" download style="background:#fff;border:1px solid var(--line);border-radius:3px;padding:25px;text-decoration:none;color:var(--olive-dark);">
+          <h4 style="margin:0 0 10px;color:var(--olive);">&#129504; AI對話紀錄</h4>
+          <p style="margin:0;font-size:0.85rem;color:var(--mist);">與AI工具協作的對話紀錄參考</p>
+        </a>
+        <a href="/theme1_brand_site/備忘/3_參考資源.txt" download style="background:#fff;border:1px solid var(--line);border-radius:3px;padding:25px;text-decoration:none;color:var(--olive-dark);">
+          <h4 style="margin:0 0 10px;color:var(--olive);">&#128218; 參考資源</h4>
+          <p style="margin:0;font-size:0.85rem;color:var(--mist);">開發過程中參考的文獻與資源</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>留頁書房 &mdash; 讓被闔上的書，再次被翻開。</p>
+    </div>
+  </footer>
+
+  <button class="voice-btn" id="voiceBtn" title="語音導讀">&#128266;</button>
+  <div class="voice-panel" id="voicePanel">
+    <h4>&#128266; 語音導讀</h4>
+    <p id="voiceStatus">點擊上方按鈕開始朗讀頁面內容</p>
+    <div class="voice-speed">
+      <label>語速：</label>
+      <select id="voiceSpeed"><option value="0.7">慢</option><option value="1" selected>正常</option><option value="1.3">快</option></select>
+    </div>
+    <button class="voice-close" id="voiceClose">停止朗讀</button>
+  </div>
+
+  <script>
+  const introText = '歡迎來到留頁書房。讓被闔上的書，再次被翻開。留頁書房成立於2023年，提供二手書買賣、舊書收購、書籍寄賣與交換服務。在這裡，每一本書都有第二次被翻閱的機會。我們的服務包括：二手書販售、舊書收購、書籍寄賣、書籍交換、主題書展，以及閱讀講座。網站提供六大主題：品牌形象、活動消息、加盟計畫、訓練課程、經營分析與銷售系統。也可以下載備忘資料查看開發記錄。';
+  let utterance = null;
+  let isPlaying = false;
+
+  function speak(text) {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'zh-TW';
+      utterance.rate = parseFloat(document.getElementById('voiceSpeed').value);
+      utterance.onend = () => { isPlaying = false; document.getElementById('voiceBtn').classList.remove('playing'); document.getElementById('voiceStatus').textContent = '朗讀完成'; };
+      utterance.onerror = () => { isPlaying = false; document.getElementById('voiceBtn').classList.remove('playing'); };
+      window.speechSynthesis.speak(utterance);
+      isPlaying = true;
+      document.getElementById('voiceBtn').classList.add('playing');
+      document.getElementById('voiceStatus').textContent = '正在朗讀...';
+    } else {
+      alert('您的瀏覽器不支援語音功能');
+    }
+  }
+
+  document.getElementById('voiceBtn').addEventListener('click', () => {
+    if (isPlaying) { window.speechSynthesis.cancel(); isPlaying = false; document.getElementById('voiceBtn').classList.remove('playing'); document.getElementById('voiceStatus').textContent = '已停止'; }
+    else { speak(introText); }
+  });
+  document.getElementById('voiceClose').addEventListener('click', () => { window.speechSynthesis.cancel(); isPlaying = false; document.getElementById('voiceBtn').classList.remove('playing'); document.getElementById('voiceStatus').textContent = '已停止'; });
+  document.getElementById('voiceSpeed').addEventListener('change', () => { if (isPlaying) { window.speechSynthesis.cancel(); speak(introText); } });
+  </script>
+</body>
+</html>

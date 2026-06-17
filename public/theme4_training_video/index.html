@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>訓練課程 — 留頁書房</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    .video-section { padding: 50px 0; }
+    .section-title { text-align: center; font-size: 1.5rem; color: var(--olive); margin-bottom: 10px; letter-spacing: 0.08em; }
+    .section-sub { text-align: center; color: var(--mist); margin-bottom: 30px; font-style: italic; }
+    .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 22px; }
+    .video-card { background: var(--paper-light); border: 1px solid var(--line); border-radius: 3px; overflow: hidden; }
+    .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; }
+    .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+    .video-info { padding: 18px 20px; }
+    .video-tag { background: var(--warm-gold); color: var(--olive-dark); padding: 3px 10px; border-radius: 2px; font-size: 0.75rem; font-weight: 500; display: inline-block; margin-bottom: 8px; }
+    .video-title { font-size: 1rem; color: var(--olive); margin-bottom: 8px; font-family: 'Noto Serif TC', serif; }
+    .video-desc { font-size: 0.85rem; color: var(--mist); line-height: 1.7; margin-bottom: 8px; }
+    .video-meta { font-size: 0.78rem; color: var(--mist); }
+    .doc-section { margin-top: 50px; }
+    .doc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 15px; }
+    .doc-item { background: var(--paper-light); padding: 16px 18px; border: 1px solid var(--line); border-radius: 3px; display: flex; align-items: center; gap: 14px; cursor: pointer; transition: all 0.2s; }
+    .doc-item:hover { background: var(--olive); border-color: var(--olive); }
+    .doc-item:hover .doc-icon { color: var(--warm-gold); }
+    .doc-item:hover .doc-name { color: var(--paper); }
+    .doc-item:hover .doc-size { color: var(--mist); }
+    .doc-icon { width: 38px; height: 38px; background: var(--olive); border-radius: 2px; display: flex; align-items: center; justify-content: center; color: var(--warm-gold); font-size: 1.2rem; flex-shrink: 0; }
+    .doc-name { font-size: 0.88rem; color: var(--olive); font-weight: 400; flex: 1; }
+    .doc-size { font-size: 0.75rem; color: var(--mist); }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <h1 class="logo">留頁書房</h1>
+      <ul class="nav-links">
+        <li><a href="/">回首頁</a></li>
+        <li><a href="/theme1_brand_site/index.html">品牌形象</a></li>
+        <li><a href="/theme2_poster/index.html">活動消息</a></li>
+        <li><a href="/theme3_franchise_deck/index.html">加盟計畫</a></li>
+        <li><a href="/theme5_dashboard/index.html">經營分析</a></li>
+        <li><a href="/theme6_pos_app/index.html">銷售系統</a></li>
+        <li><a href="/admin/index.html" class="btn-login">管理後台</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero"><div class="container"><h2>教育訓練中心</h2><p style="opacity:0.7;font-style:italic;">以書為業，以人為師</p></div></header>
+
+  <main class="container">
+    <section class="video-section">
+      <h3 class="section-title">新手入門訓練</h3>
+      <p class="section-sub">完整教學影片，協助快速上手門市營運</p>
+      <div class="video-grid">
+        <div class="video-card">
+          <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/EngW7tLk6R8" allowfullscreen loading="lazy"></iframe></div>
+          <div class="video-info">
+            <span class="video-tag">必修</span>
+            <h4 class="video-title">圖書館使用導覽</h4>
+            <p class="video-desc">認識圖書館服務與書籍分類的基本概念</p>
+            <p class="video-meta">片長 8:32 | 公開影片</p>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen loading="lazy"></iframe></div>
+          <div class="video-info">
+            <span class="video-tag">必修</span>
+            <h4 class="video-title">書店服務流程介紹</h4>
+            <p class="video-desc">了解書籍陳列、結帳、進貨等基礎作業</p>
+            <p class="video-meta">片長 12:15 | 公開影片</p>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/jNQXAC9IVRw" allowfullscreen loading="lazy"></iframe></div>
+          <div class="video-info">
+            <span class="video-tag">必修</span>
+            <h4 class="video-title">會員系統操作</h4>
+            <p class="video-desc">新會員註冊、舊會員資料更新、積分查詢</p>
+            <p class="video-meta">片長 6:45 | 公開影片</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="video-section">
+      <h3 class="section-title">進階技能訓練</h3>
+      <p class="section-sub">提升專業能力，創造更高營收</p>
+      <div class="video-grid">
+        <div class="video-card">
+          <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/9bZkp7q19f0" allowfullscreen loading="lazy"></iframe></div>
+          <div class="video-info">
+            <span class="video-tag">選修</span>
+            <h4 class="video-title">書籍保存與修復</h4>
+            <p class="video-desc">如何妥善保存舊書、簡易修復技巧</p>
+            <p class="video-meta">片長 15:20 | 公開影片</p>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/CevxZvSJLk8" allowfullscreen loading="lazy"></iframe></div>
+          <div class="video-info">
+            <span class="video-tag">選修</span>
+            <h4 class="video-title">顧客服務與抱怨處理</h4>
+            <p class="video-desc">優質服務心法與各種情境應對技巧</p>
+            <p class="video-meta">片長 11:08 | 公開影片</p>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/K4TOrB7at0Y" allowfullscreen loading="lazy"></iframe></div>
+          <div class="video-info">
+            <span class="video-tag">選修</span>
+            <h4 class="video-title">庫存管理與調貨作業</h4>
+            <p class="video-desc">利用系統優化庫存，降低滯銷比率</p>
+            <p class="video-meta">片長 9:55 | 公開影片</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="doc-section">
+      <h3 class="section-title" style="text-align:center;">技術文件下載</h3>
+      <p class="section-sub" style="text-align:center;">教育訓練手冊與標準作業文件，點擊即可下載</p>
+      <div class="doc-grid">
+        <div class="doc-item" onclick="window.open('/api/doc/sop.pdf','_blank')">
+          <div class="doc-icon">&#128196;</div>
+          <div>
+            <div class="doc-name">門市SOP作業手冊</div>
+            <div class="doc-size">PDF | 2.4 MB</div>
+          </div>
+        </div>
+        <div class="doc-item" onclick="window.open('/api/doc/pricing.xlsx','_blank')">
+          <div class="doc-icon">&#128200;</div>
+          <div>
+            <div class="doc-name">書籍鑑價參考表</div>
+            <div class="doc-size">Excel | 856 KB</div>
+          </div>
+        </div>
+        <div class="doc-item" onclick="window.open('/api/doc/pos-guide.pdf','_blank')">
+          <div class="doc-icon">&#128187;</div>
+          <div>
+            <div class="doc-name">POS系統操作指南</div>
+            <div class="doc-size">PDF | 3.1 MB</div>
+          </div>
+        </div>
+        <div class="doc-item" onclick="window.open('/api/doc/membership.pdf','_blank')">
+          <div class="doc-icon">&#128101;</div>
+          <div>
+            <div class="doc-name">會員管理辦法</div>
+            <div class="doc-size">PDF | 1.2 MB</div>
+          </div>
+        </div>
+        <div class="doc-item" onclick="window.open('/api/doc/display.pdf','_blank')">
+          <div class="doc-icon">&#127912;</div>
+          <div>
+            <div class="doc-name">商品陳列建議</div>
+            <div class="doc-size">PDF | 4.5 MB</div>
+          </div>
+        </div>
+        <div class="doc-item" onclick="window.open('/api/doc/emergency.pdf','_blank')">
+          <div class="doc-icon">&#128644;</div>
+          <div>
+            <div class="doc-name">緊急應變流程</div>
+            <div class="doc-size">PDF | 890 KB</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="container"><p>留頁書房 &mdash; 讓被闔上的書，再次被翻開。</p></div></footer>
+</body>
+</html>

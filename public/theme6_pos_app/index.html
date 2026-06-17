@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>銷售系統 — 留頁書房</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    .pos-layout { display: grid; grid-template-columns: 1fr 340px; gap: 20px; padding: 50px 0; }
+    .pos-section { background: var(--paper-light); border: 1px solid var(--line); border-radius: 3px; padding: 25px; }
+    .pos-section h3 { color: var(--olive); font-size: 1.05rem; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line); letter-spacing: 0.05em; }
+    .pos-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+    .user-info { font-size: 0.88rem; color: var(--mist); }
+    .book-list { display: flex; flex-direction: column; gap: 8px; max-height: 380px; overflow-y: auto; }
+    .book-item { display: flex; justify-content: space-between; align-items: center; padding: 11px 15px; background: var(--paper); border: 1px solid var(--line); border-radius: 2px; cursor: pointer; transition: all 0.2s; }
+    .book-item:hover { background: #DDD8C8; }
+    .book-item .name { font-weight: 400; color: var(--olive); font-size: 0.92rem; }
+    .book-item .price { color: var(--warm-gold); font-weight: 500; font-size: 0.92rem; }
+    .book-item .stock { font-size: 0.78rem; color: var(--mist); }
+    .cart-list { display: flex; flex-direction: column; gap: 8px; max-height: 320px; overflow-y: auto; }
+    .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line); }
+    .cart-item .qty { display: flex; align-items: center; gap: 8px; }
+    .cart-item button { width: 26px; height: 26px; border: 1px solid var(--mist); background: var(--paper); border-radius: 2px; cursor: pointer; font-size: 0.9rem; }
+    .cart-item button:hover { background: var(--line); }
+    .cart-item .subtotal { font-weight: 500; color: var(--olive); font-size: 0.92rem; }
+    .cart-summary { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line); }
+    .summary-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.95rem; color: var(--olive-light); }
+    .summary-row.total { font-size: 1.25rem; font-weight: 500; color: var(--olive); margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--mist); }
+    .btn-checkout { width: 100%; padding: 13px; background: var(--olive); color: var(--paper); border: none; border-radius: 2px; font-size: 0.95rem; cursor: pointer; margin-top: 14px; font-family: 'Noto Sans TC', sans-serif; }
+    .btn-checkout:hover { background: var(--olive-light); }
+    .btn-clear { width: 100%; padding: 10px; background: transparent; color: var(--mist); border: 1px solid var(--mist); border-radius: 2px; font-size: 0.88rem; cursor: pointer; margin-top: 8px; font-family: 'Noto Sans TC', sans-serif; }
+    .btn-clear:hover { background: var(--paper); }
+    .login-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(34,35,31,0.85); display: flex; align-items: center; justify-content: center; z-index: 1000; }
+    .login-box { background: var(--paper); padding: 40px; border-radius: 3px; width: 340px; text-align: center; }
+    .login-box h2 { color: var(--olive); font-size: 1.3rem; margin-bottom: 28px; letter-spacing: 0.1em; }
+    .login-box input { width: 100%; padding: 11px 14px; margin-bottom: 13px; border: 1px solid var(--mist); border-radius: 2px; font-size: 0.95rem; background: var(--paper-light); color: var(--ink); font-family: 'Noto Sans TC', sans-serif; }
+    .login-box button { width: 100%; padding: 11px; background: var(--olive); color: var(--paper); border: none; border-radius: 2px; font-size: 0.95rem; cursor: pointer; font-family: 'Noto Sans TC', sans-serif; }
+    .login-box button:hover { background: var(--olive-light); }
+    .login-box p { margin-top: 14px; font-size: 0.8rem; color: var(--mist); }
+  </style>
+</head>
+<body>
+  <div class="login-overlay" id="loginOverlay">
+    <div class="login-box">
+      <h2>留頁書房 銷售系統</h2>
+      <input type="text" id="username" placeholder="員工帳號" value="admin">
+      <input type="password" id="password" placeholder="密碼" value="admin123">
+      <button onclick="login()">登入</button>
+      <p>測試帳號：admin / admin123</p>
+    </div>
+  </div>
+
+  <nav class="navbar">
+    <div class="container">
+      <h1 class="logo">留頁書房</h1>
+      <ul class="nav-links">
+        <li><a href="/">回首頁</a></li>
+        <li><a href="/theme1_brand_site/index.html">品牌形象</a></li>
+        <li><a href="/theme5_dashboard/index.html">經營分析</a></li>
+        <li><a href="/admin/index.html" class="btn-login">管理後台</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="pos-layout" id="posApp" style="display:none;">
+      <div class="pos-left">
+        <div class="pos-section">
+          <div class="pos-header">
+            <h3>書籍清單</h3>
+            <div class="user-info">員工：<span id="currentUser">-</span></div>
+          </div>
+          <div class="book-list" id="bookList"></div>
+        </div>
+      </div>
+      <div class="pos-right">
+        <div class="pos-section">
+          <h3>購物結帳</h3>
+          <div class="cart-list" id="cartList"></div>
+          <div class="cart-summary">
+            <div class="summary-row"><span>商品件數</span><span id="totalQty">0 件</span></div>
+            <div class="summary-row"><span>折扣</span><span>NT$ 0</span></div>
+            <div class="summary-row total"><span>合計</span><span id="totalPrice">NT$ 0</span></div>
+          </div>
+          <button class="btn-checkout" onclick="checkout()">完成結帳</button>
+          <button class="btn-clear" onclick="clearCart()">清空購物車</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    let cart = [];
+    async function login() {
+      const u = document.getElementById('username').value;
+      const p = document.getElementById('password').value;
+      const res = await fetch('/api/auth/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ username: u, password: p }) });
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('loginOverlay').style.display = 'none';
+        document.getElementById('posApp').style.display = 'grid';
+        document.getElementById('currentUser').textContent = data.user.username;
+        loadBooks();
+      } else { alert('登入失敗：' + (data.message || '請檢查帳密')); }
+    }
+    async function loadBooks() {
+      const res = await fetch('/api/books');
+      const books = await res.json();
+      document.getElementById('bookList').innerHTML = books.map(b => `<div class="book-item" onclick="addToCart('${b.id}','${b.name}',${b.price})"><div><div class="name">${b.name}</div><div class="stock">庫存：${b.stock} 本</div></div><div class="price">NT$ ${b.price}</div></div>`).join('');
+    }
+    function addToCart(id, name, price) {
+      const ex = cart.find(i => i.id === id);
+      ex ? ex.qty++ : cart.push({ id, name, price, qty: 1 });
+      renderCart();
+    }
+    function changeQty(id, d) {
+      const it = cart.find(i => i.id === id);
+      if (it) { it.qty += d; if (it.qty <= 0) cart = cart.filter(i => i.id !== id); }
+      renderCart();
+    }
+    function renderCart() {
+      document.getElementById('cartList').innerHTML = cart.map(i => `<div class="cart-item"><div class="qty"><button onclick="changeQty('${i.id}',-1)">-</button><span>${i.qty}</span><button onclick="changeQty('${i.id}',1)">+</button></div><div>${i.name}</div><div class="subtotal">NT$ ${i.price * i.qty}</div></div>`).join('');
+      document.getElementById('totalQty').textContent = cart.reduce((s,i) => s+i.qty, 0) + ' 件';
+      document.getElementById('totalPrice').textContent = 'NT$ ' + cart.reduce((s,i) => s + i.price * i.qty, 0);
+    }
+    function clearCart() { cart = []; renderCart(); }
+    async function checkout() {
+      if (!cart.length) return alert('購物車是空的');
+      const items = cart.map(i => ({ bookId: i.id, qty: i.qty, price: i.price }));
+      const total = cart.reduce((s,i) => s + i.price * i.qty, 0);
+      const res = await fetch('/api/pos/checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ items, total, cashier: document.getElementById('currentUser').textContent }) });
+      const data = await res.json();
+      if (data.success) { alert('結帳成功！訂單編號：' + data.orderId); cart = []; renderCart(); loadBooks(); }
+      else { alert('結帳失敗'); }
+    }
+  </script>
+</body>
+</html>

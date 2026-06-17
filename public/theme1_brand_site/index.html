@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>品牌形象 — 留頁書房</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@300;400&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    .brand-container { max-width: 900px; margin: 0 auto; padding: 50px 20px; }
+    .brand-hero { text-align: center; padding: 40px 0 50px; border-bottom: 1px solid var(--line); margin-bottom: 50px; }
+    .brand-hero h2 { font-size: 2.2rem; color: var(--olive); margin-bottom: 15px; letter-spacing: 0.1em; }
+    .brand-hero .sub { font-size: 1rem; color: var(--mist); font-style: italic; }
+    .brand-section { margin-bottom: 55px; }
+    .brand-section h3 { color: var(--olive); font-size: 1.3rem; margin-bottom: 18px; letter-spacing: 0.08em; border-left: 3px solid var(--warm-gold); padding-left: 15px; }
+    .brand-section p { color: var(--olive-light); line-height: 2; font-size: 0.97rem; margin-bottom: 12px; }
+
+    .story-box { background: var(--olive); color: var(--paper); padding: 35px 40px; border-radius: 3px; text-align: center; margin: 20px 0; }
+    .story-box p { font-size: 1.2rem; font-style: italic; letter-spacing: 0.1em; color: var(--warm-gold); font-family: 'Noto Serif TC', serif; }
+
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0; }
+    .service-item { background: var(--paper-light); border: 1px solid var(--line); padding: 18px 20px; border-radius: 3px; color: var(--olive); font-size: 0.92rem; text-align: center; }
+
+    .category-grid { display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0; }
+    .cat-tag { background: var(--olive); color: var(--paper); padding: 7px 18px; border-radius: 20px; font-size: 0.88rem; }
+    .cat-tag.gold { background: var(--warm-gold); color: var(--olive-dark); }
+
+    .features-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin: 20px 0; }
+    .feat-item { display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: var(--paper-light); border: 1px solid var(--line); border-radius: 3px; font-size: 0.9rem; color: var(--olive); }
+    .feat-icon { color: var(--warm-gold); font-size: 1.1rem; flex-shrink: 0; }
+
+    .event-list { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
+    .event-item { display: flex; gap: 15px; padding: 14px 18px; background: var(--paper-light); border: 1px solid var(--line); border-radius: 3px; align-items: center; }
+    .event-icon { color: var(--warm-gold); font-size: 1.2rem; flex-shrink: 0; }
+    .event-text { font-size: 0.9rem; color: var(--olive); }
+
+    .color-palette { display: flex; gap: 18px; flex-wrap: wrap; justify-content: center; margin: 25px 0; }
+    .color-item { text-align: center; }
+    .color-block { width: 75px; height: 75px; border-radius: 3px; margin-bottom: 7px; }
+    .color-name { font-size: 0.82rem; font-weight: 500; color: var(--ink); }
+    .color-hex { font-size: 0.75rem; color: var(--mist); font-family: monospace; }
+
+    .font-showcase { display: flex; flex-direction: column; gap: 16px; margin: 25px 0; }
+    .font-item { background: var(--paper-light); padding: 18px 22px; border: 1px solid var(--line); border-radius: 3px; }
+    .font-label { font-size: 0.78rem; color: var(--mist); margin-bottom: 7px; }
+    .font-sample { font-size: 1.5rem; color: var(--olive); }
+    .font-sample.serif { font-family: 'Noto Serif TC', serif; font-weight: 300; }
+    .font-sample.sans { font-family: 'Noto Sans TC', sans-serif; font-weight: 300; }
+    .font-sample.hand { font-family: 'Ma Shan Zheng', cursive; font-size: 1.7rem; }
+
+    .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin: 20px 0; }
+    .value-card { background: var(--paper-light); padding: 20px 18px; border: 1px solid var(--line); border-radius: 3px; }
+    .value-card h4 { color: var(--olive); font-size: 0.95rem; margin-bottom: 7px; letter-spacing: 0.03em; }
+    .value-card p { font-size: 0.85rem; color: var(--olive-light); line-height: 1.7; }
+
+    .timeline { position: relative; padding-left: 28px; margin: 25px 0; }
+    .timeline::before { content: ''; position: absolute; left: 6px; top: 5px; bottom: 0; width: 1px; background: var(--mist); }
+    .timeline-item { position: relative; margin-bottom: 20px; }
+    .timeline-item::before { content: ''; position: absolute; left: -26px; top: 7px; width: 8px; height: 8px; border-radius: 50%; background: var(--warm-gold); }
+    .timeline-year { font-size: 0.88rem; color: var(--warm-gold); font-weight: 500; }
+    .timeline-text { color: var(--olive-light); margin-top: 4px; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <h1 class="logo">留頁書房</h1>
+      <ul class="nav-links">
+        <li><a href="/">回首頁</a></li>
+        <li><a href="/theme2_poster/index.html">活動消息</a></li>
+        <li><a href="/theme3_franchise_deck/index.html">加盟計畫</a></li>
+        <li><a href="/theme4_training_video/index.html">訓練課程</a></li>
+        <li><a href="/theme5_dashboard/index.html">經營分析</a></li>
+        <li><a href="/theme6_pos_app/index.html">銷售系統</a></li>
+        <li><a href="/admin/index.html" class="btn-login">管理後台</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="brand-container">
+    <div class="brand-hero">
+      <h2>留頁書房</h2>
+      <p class="sub">讓被闔上的書，再次被翻開。</p>
+    </div>
+
+    <div class="brand-section">
+      <h3>品牌故事</h3>
+      <div class="story-box"><p>「讓舊書重新遇見新讀者」</p></div>
+      <p>留頁書房成立於 2023 年，是一個新型態的二手書流通平台。在大量消費、快速淘汰的時代，我們希望成為書籍的守護者——讓每一本被闔上的書，都有再次被翻開的機會。</p>
+      <p>每一位走進留頁的讀者，都能感受到這裡的氛圍：安靜、溫暖、如同走進一間老朋友的書房。每一位離開的讀者，都帶走了一份新的閱讀渴望。</p>
+    </div>
+
+    <div class="brand-section">
+      <h3>服務介紹</h3>
+      <div class="services-grid">
+        <div class="service-item">二手書販售</div>
+        <div class="service-item">舊書收購</div>
+        <div class="service-item">書籍寄賣</div>
+        <div class="service-item">會員集點</div>
+        <div class="service-item">閱讀活動</div>
+      </div>
+    </div>
+
+    <div class="brand-section">
+      <h3>熱門書籍分類</h3>
+      <p style="color:var(--olive-light);font-size:0.9rem;margin-bottom:15px;">點擊分類即可瀏覽該類書籍</p>
+      <div class="category-grid" id="categoryGrid">
+        <span class="cat-tag gold" data-category="literature">文學小說</span>
+        <span class="cat-tag" data-category="business">商業理財</span>
+        <span class="cat-tag" data-category="selfhelp">心理成長</span>
+        <span class="cat-tag" data-category="design">設計藝術</span>
+        <span class="cat-tag" data-category="exam">考試用書</span>
+        <span class="cat-tag" data-category="comic">漫畫輕小說</span>
+      </div>
+      <div id="bookList" style="display:none;margin-top:20px;background:var(--paper-light);border:1px solid var(--line);border-radius:3px;padding:20px;"></div>
+    </div>
+
+    <script>
+    const bookData = {
+      literature: ['解憂雜貨店（東野圭吾）', '麥田捕手（沙林傑）', '人間失格（太宰治）', '追風箏的孩子（胡賽尼）', '刺殺騎士團長（村上春樹）'],
+      business: ['富爸爸窮爸爸（清崎）', '原則（達利歐）', '窮查理的普通常識（蒙格）', '蛤蟆先生去看心理師', '原子習慣（克利爾）'],
+      selfhelp: ['被討厭的勇氣（岸見一郎）', '活出生命的意義（弗蘭克）', '心流：最優體驗心理學（契克森米哈伊）', '正念：此刻是一枝花（卡巴金）'],
+      design: ['設計的心理學（唐·諾曼）', '點石成金（克魯格）', 'SWAY 思考的陷阱（艾爾博特）', '配色設計原理'],
+      exam: ['研究所考試用書精選', '公職考試歷屆試題詳解', '多益模擬試題NEW TOEIC', '高普考試专用教材'],
+      comic: ['鬼滅之刃（吾峠呼世晴）', '進擊的巨人（諫山創）', 'ONE PIECE（尾田榮一郎）', '火影忍者（岸本齊史）', '咒術迴戰（芥見下下）']
+    };
+    document.querySelectorAll('.cat-tag').forEach(tag => {
+      tag.style.cursor='pointer';
+      tag.addEventListener('click', () => {
+        const cat = tag.dataset.category;
+        const books = bookData[cat] || [];
+        const list = document.getElementById('bookList');
+        list.style.display='block';
+        list.innerHTML='<h4 style="color:var(--olive);margin-bottom:12px;">'+tag.textContent+'</h4><ul style="color:var(--olive-light);line-height:2;">'+books.map(b=>'<li>'+b+'</li>').join('')+'</ul>';
+      });
+    });
+    </script>
+
+    <div class="brand-section">
+      <h3>門市特色</h3>
+      <div class="features-list">
+        <div class="feat-item"><span class="feat-icon">&#9679;</span>安靜閱讀角</div>
+        <div class="feat-item"><span class="feat-icon">&#9679;</span>以書換書區</div>
+        <div class="feat-item"><span class="feat-icon">&#9679;</span>舊書回收櫃</div>
+        <div class="feat-item"><span class="feat-icon">&#9679;</span>學生折扣日</div>
+      </div>
+    </div>
+
+    <div class="brand-section">
+      <h3>活動資訊</h3>
+      <div class="event-list">
+        <div class="event-item"><span class="event-icon">&#9733;</span><span class="event-text">開幕特賣 — 全館書籍 85 折起</span></div>
+        <div class="event-item"><span class="event-icon">&#9733;</span><span class="event-text">舊書交換日 — 每月第一個週六</span></div>
+        <div class="event-item"><span class="event-icon">&#9733;</span><span class="event-text">會員限定書展 — 深度閱讀主題展</span></div>
+      </div>
+    </div>
+
+    <div class="brand-section">
+      <h3>標準色彩</h3>
+      <p style="color:var(--olive-light);font-size:0.9rem;margin-bottom:10px;">留頁書房品牌色彩靈感來自公益活動與社區關懷。</p>
+      <div class="color-palette">
+        <div class="color-item"><div class="color-block" style="background:#2F3A1F;"></div><div class="color-name">森林綠</div><div class="color-hex">#2F3A1F</div></div>
+        <div class="color-item"><div class="color-block" style="background:#1D260F;"></div><div class="color-name">書頁深綠</div><div class="color-hex">#1D260F</div></div>
+        <div class="color-item"><div class="color-block" style="background:#3D4A2E;"></div><div class="color-name">暖葉綠</div><div class="color-hex">#3D4A2E</div></div>
+        <div class="color-item"><div class="color-block" style="background:#E8E2D3;"></div><div class="color-name">牛皮紙</div><div class="color-hex">#E8E2D3</div></div>
+        <div class="color-item"><div class="color-block" style="background:#B8BDB0;"></div><div class="color-name">雲石灰</div><div class="color-hex">#B8BDB0</div></div>
+        <div class="color-item"><div class="color-block" style="background:#BFA46A;"></div><div class="color-name">書籤金</div><div class="color-hex">#BFA46A</div></div>
+        <div class="color-item"><div class="color-block" style="background:#22231F;"></div><div class="color-name">墨黑</div><div class="color-hex">#22231F</div></div>
+      </div>
+      <p style="color:var(--mist);font-size:0.82rem;margin-top:10px;font-style:italic;">色彩含義：森林綠象徵與荒野仁愛基金會合作的植樹造林計畫，書籤金代表「偏鄉書香」活動中贈送的紀念書籤。</p>
+    </div>
+
+    <div class="brand-section">
+      <h3>標準字體</h3>
+      <p style="color:var(--olive-light);font-size:0.9rem;margin-bottom:10px;">字體風格融合公益關懷與文學氣息。</p>
+      <div class="font-showcase">
+        <div class="font-item"><div class="font-label">標題字 — Noto Serif TC</div><div class="font-sample serif">荒野仁愛·偏鄉書香</div></div>
+        <div class="font-item"><div class="font-label">內文字 — Noto Sans TC</div><div class="font-sample sans">每一個偏鄉孩子都值得擁有一本好書，留頁書房關懷教育不遺餘力</div></div>
+        <div class="font-item"><div class="font-label">裝飾字 — Ma Shan Zheng</div><div class="font-sample hand">公益閱讀</div></div>
+      </div>
+      <p style="color:var(--mist);font-size:0.82rem;margin-top:10px;font-style:italic;">字體應用：曾用於「與世界和平會合作的災區圖書館重建計畫」海報，以及「暖心讀書會」社區活動文宣。</p>
+    </div>
+
+    <div class="brand-section">
+      <h3>公益活動與社會關懷</h3>
+      <div class="event-list">
+        <div class="event-item"><span class="event-icon">&#9733;</span><span class="event-text">荒野仁愛植樹造林計畫 — 2024年3月，每售出一本書捐贈5元</span></div>
+        <div class="event-item"><span class="event-icon">&#9733;</span><span class="event-text">偏鄉書香捐贈活動 — 2024年6月，捐贈500本童書至台東偏鄉學校</span></div>
+        <div class="event-item"><span class="event-icon">&#9733;</span><span class="event-text">世界和平會災區圖書館重建 — 2024年9月，花蓮地震後支援圖書館修建</span></div>
+        <div class="event-item"><span class="event-icon">&#9733;</span><span class="event-text">暖心讀書會社區活動 — 每月第三個週六，與里民中心合辦免費閱讀推廣</span></div>
+      </div>
+    </div>
+
+    <div class="brand-section">
+      <h3>品牌調性</h3>
+      <div class="values-grid">
+        <div class="value-card"><h4>溫暖</h4><p>如同走進一間老書房，處處是文字的溫度</p></div>
+        <div class="value-card"><h4>文學</h4><p>以文學為核心，傳承閱讀的美好傳統</p></div>
+        <div class="value-card"><h4>復古</h4><p>保留紙本時代的從容與優雅</p></div>
+        <div class="value-card"><h4>安靜</h4><p>提供城市中一方靜謐的閱讀角落</p></div>
+        <div class="value-card"><h4>親切</h4><p>以人為本，提供真誠的書籍服務</p></div>
+      </div>
+    </div>
+
+    <div class="brand-section">
+      <h3>品牌歷程</h3>
+      <div class="timeline">
+        <div class="timeline-item"><div class="timeline-year">2023 年春</div><div class="timeline-text">留頁書房成立，第一家店落腳台北市大安區</div></div>
+        <div class="timeline-item"><div class="timeline-year">2023 年夏</div><div class="timeline-text">推出會員制度與書籍交換服務</div></div>
+        <div class="timeline-item"><div class="timeline-year">2024 年初</div><div class="timeline-text">第二家分店開幕，開始加盟諮詢</div></div>
+        <div class="timeline-item"><div class="timeline-year">2024 年中</div><div class="timeline-text">上線數位會員系統與 POS 銷售管理</div></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer"><div class="container"><p>留頁書房 &mdash; 讓被闔上的書，再次被翻開。</p></div></footer>
+</body>
+</html>

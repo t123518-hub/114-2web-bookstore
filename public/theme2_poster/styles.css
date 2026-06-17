@@ -1,0 +1,23 @@
+.event-section { padding: 40px 0; }
+.event-header { text-align: center; margin-bottom: 30px; }
+.event-header h3 { font-size: 1.8rem; color: var(--primary); }
+.event-date { color: var(--accent); margin-top: 5px; }
+
+.poster-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 50px; }
+.poster-card { background: var(--white); border-radius: 16px; padding: 30px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); transition: transform 0.3s; position: relative; overflow: hidden; }
+.poster-card:hover { transform: translateY(-8px); }
+.poster-badge { background: var(--accent); color: white; padding: 5px 15px; border-radius: 20px; display: inline-block; margin-bottom: 15px; font-size: 0.85rem; }
+.poster-card h4 { font-size: 1.3rem; margin-bottom: 10px; color: var(--primary); }
+
+.poster-1 { background: linear-gradient(135deg, #FFCCBC 0%, #FFAB91 100%); }
+.poster-2 { background: linear-gradient(135deg, #C8E6C9 0%, #A5D6A7 100%); }
+.poster-3 { background: linear-gradient(135deg, #BBDEFB 0%, #90CAF9 100%); }
+
+.coupon-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.coupon { display: flex; border: 2px dashed var(--secondary); border-radius: 12px; overflow: hidden; }
+.coupon-left { background: var(--primary); color: white; padding: 25px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 120px; }
+.coupon-value { font-size: 1.8rem; font-weight: bold; }
+.coupon-desc { font-size: 0.85rem; opacity: 0.8; }
+.coupon-right { padding: 20px; display: flex; flex-direction: column; justify-content: center; }
+.coupon-right p { font-size: 1rem; margin-bottom: 5px; }
+.coupon-right small { color: #888; }

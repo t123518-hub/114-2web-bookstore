@@ -1,0 +1,26 @@
+留頁書房 — 發想與準備
+
+【數據分析儀表板發想】
+目的：展示門市經營數據視覺化報表
+風格：企業級儀表板，KPI 卡片 + 圖表 + 資料表
+色調：墨綠（#2F3A1F）、暖米（#E8E2D3）、暖金（#BFA46A）
+
+【KPI 指標】
+月營收、訂單數、書籍流通量、會員總數
+使用大字體（1.8rem）強調數字，附上成長率標示
+
+【圖表技術】
+使用 Chart.js（CDN）繪製互動式圖表
+圖表類型：
+- 月營收趨勢：折線圖（Line Chart）
+- 書籍類別佔比：圓餅圖（Doughnut Chart）
+- 各店營收：橫條圖（Bar Chart, horizontal）
+- 書籍流通：雷達圖（Radar Chart）
+
+【資料來源】
+即時從 /api/admin/* 端點讀取 bookstore.xlsx 資料
+Chart.js 資料集需對應書籍分類與訂單數據
+
+【技術實作】
+Chart.js CDN：https://cdn.jsdelivr.net/npm/chart.js
+使用 fetch(async) 搭配 .then() 解析 API 回應

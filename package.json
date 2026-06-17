@@ -1,0 +1,16 @@
+{
+  "name": "114-2web-bookstore",
+  "version": "1.0.0",
+  "description": "二手書店連鎖品牌網站",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "init-db": "node scripts/initExcel.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "xlsx": "^0.18.5"
+  }
+}

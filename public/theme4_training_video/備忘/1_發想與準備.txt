@@ -1,0 +1,29 @@
+留頁書房 — 發想與準備
+
+【訓練中心發想】
+目的：提供門市人員教育訓練內容與文件下載
+風格：影片卡片式列表 + 文件下載區塊
+色調：墨綠（#2F3A1F）、暖米（#E8E2D3）、暖金（#BFA46A）
+
+【訓練影片分類】
+新手入門（必修）：
+- 圖書館使用導覽（8:32）
+- 書店服務流程介紹（12:15）
+- 會員系統操作（6:45）
+
+進階技能（選修）：
+- 書籍保存與修復（15:20）
+- 顧客服務與抱怨處理（11:08）
+- 庫存管理與調貨作業（9:55）
+
+【文件下載區】
+門市SOP作業手冊 → /api/doc/sop.pdf
+書籍鑑價參考表 → /api/doc/pricing.xlsx
+POS系統操作指南 → /api/doc/pos-guide.pdf
+會員管理辦法 → /api/doc/membership.pdf
+商品陳列建議 → /api/doc/display.pdf
+緊急應變流程 → /api/doc/emergency.pdf
+
+【技術實作】
+影片：YouTube IFrame 嵌入，比例 16:9（padding-bottom: 56.25%）
+文件：onclick 觸發 window.open 進行下載

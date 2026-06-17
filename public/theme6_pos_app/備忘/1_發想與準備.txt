@@ -1,0 +1,24 @@
+留頁書房 — 發想與準備
+
+【POS 銷售系統發想】
+目的：類比真實書店 POS 系統，包含登入、書籍查詢、購物車、結帳
+風格：商務系統介面，功能導向，清晰高效
+色調：墨綠（#2F3A1F）、暖米（#E8E2D3）、暖金（#BFA46A）
+
+【系統功能模組】
+1. 登入驗證：POST /api/auth/login（帳密：admin123 / admin123）
+2. 書籍清單：GET /api/books（顯示所有書籍，可搜尋）
+3. 購物車：前端 JS 管理（加入、刪除、數量調整）
+4. 結帳作業：POST /api/pos/checkout（送出訂單）
+
+【技術實作】
+Session-based 認證：express-session 管理登入狀態
+密碼驗證：bcrypt.compareSync 比對雜湊後密碼
+書籍分類：文學小說、心理成長、藝術設計、社會科學、兒童繪本、漫畫生活、醫療保健、商業理財
+
+【資料庫結構】
+bookstore.xlsx 分頁：
+- users：id, username, password（bcrypt）, role, createdAt
+- books：id, title, author, category, price, stock, image, description
+- members：id, name, phone, email, points, createdAt
+- orders：id, memberId, books(JSON), total, status, createdAt

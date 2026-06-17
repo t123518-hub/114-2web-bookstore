@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>管理後台 — 留頁書房</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    .admin-layout { display: flex; min-height: calc(100vh - 120px); }
+    .admin-sidebar { width: 210px; background: var(--olive-dark); }
+    .sidebar-menu { list-style: none; padding: 15px 0; }
+    .sidebar-menu li { padding: 13px 20px; cursor: pointer; border-left: 3px solid transparent; color: var(--mist); font-size: 0.9rem; transition: all 0.2s; }
+    .sidebar-menu li:hover, .sidebar-menu li.active { background: var(--olive-light); color: var(--warm-gold); border-left-color: var(--warm-gold); }
+    .admin-content { flex: 1; padding: 28px; background: var(--paper); }
+    .admin-panel { background: var(--paper-light); border: 1px solid var(--line); border-radius: 3px; padding: 25px; }
+    .panel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+    .panel-header h2 { color: var(--olive); font-size: 1.15rem; letter-spacing: 0.05em; }
+    .btn-add { background: var(--warm-gold); color: var(--olive-dark); padding: 7px 18px; border: none; border-radius: 2px; font-size: 0.88rem; cursor: pointer; font-family: 'Noto Sans TC', sans-serif; font-weight: 500; }
+    .btn-add:hover { background: #C9B07A; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 11px 13px; text-align: left; border-bottom: 1px solid var(--line); font-size: 0.88rem; }
+    th { color: var(--olive); font-weight: 500; background: transparent; }
+    tr:hover { background: rgba(47,58,31,0.03); }
+    .actions button { padding: 4px 11px; margin-right: 5px; border: 1px solid var(--mist); background: transparent; border-radius: 2px; cursor: pointer; font-size: 0.82rem; font-family: 'Noto Sans TC', sans-serif; }
+    .actions .btn-edit { color: var(--olive); }
+    .actions .btn-del { color: #A65D3E; }
+    .modal { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(34,35,31,0.7); display: flex; align-items: center; justify-content: center; }
+    .modal form { background: var(--paper); padding: 30px; border-radius: 3px; width: 380px; }
+    .modal h3 { color: var(--olive); font-size: 1.1rem; margin-bottom: 22px; letter-spacing: 0.05em; }
+    .modal input, .modal select { width: 100%; padding: 10px 12px; margin-bottom: 11px; border: 1px solid var(--mist); border-radius: 2px; font-size: 0.9rem; background: var(--paper-light); color: var(--ink); font-family: 'Noto Sans TC', sans-serif; }
+    .modal-btns { display: flex; gap: 10px; margin-top: 14px; }
+    .modal-btns button { flex: 1; padding: 9px; border: none; border-radius: 2px; cursor: pointer; font-size: 0.9rem; font-family: 'Noto Sans TC', sans-serif; }
+    .modal-btns .btn-save { background: var(--olive); color: var(--paper); }
+    .modal-btns .btn-cancel { background: var(--mist); color: var(--ink); }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <h1 class="logo">留頁書房</h1>
+      <ul class="nav-links">
+        <li><a href="/">回首頁</a></li>
+        <li><a href="/theme6_pos_app/index.html">銷售系統</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="admin-layout">
+      <aside class="admin-sidebar">
+        <ul class="sidebar-menu">
+          <li class="active" data-tab="books">書籍管理</li>
+          <li data-tab="members">會員管理</li>
+          <li data-tab="orders">訂單管理</li>
+          <li data-tab="users">使用者管理</li>
+        </ul>
+      </aside>
+      <main class="admin-content">
+        <div id="panel-books" class="admin-panel">
+          <div class="panel-header"><h2>書籍管理</h2><button class="btn-add" onclick="openModal('books')">+ 新增書籍</button></div>
+          <table><thead><tr><th>書名</th><th>分類</th><th>作者</th><th>定價</th><th>庫存</th><th>操作</th></tr></thead><tbody id="booksTable"></tbody></table>
+        </div>
+        <div id="panel-members" class="admin-panel" style="display:none;">
+          <div class="panel-header"><h2>會員管理</h2><button class="btn-add" onclick="openModal('members')">+ 新增會員</button></div>
+          <table><thead><tr><th>姓名</th><th>電話</th><th>Email</th><th>積分</th><th>註冊日</th><th>操作</th></tr></thead><tbody id="membersTable"></tbody></table>
+        </div>
+        <div id="panel-orders" class="admin-panel" style="display:none;">
+          <div class="panel-header"><h2>訂單管理</h2></div>
+          <table><thead><tr><th>訂單編號</th><th>日期</th><th>收銀員</th><th>金額</th><th>項目數</th></tr></thead><tbody id="ordersTable"></tbody></table>
+        </div>
+        <div id="panel-users" class="admin-panel" style="display:none;">
+          <div class="panel-header"><h2>使用者管理</h2><button class="btn-add" onclick="openModal('users')">+ 新增使用者</button></div>
+          <table><thead><tr><th>帳號</th><th>角色</th><th>建立時間</th><th>操作</th></tr></thead><tbody id="usersTable"></tbody></table>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="modal" id="modal" style="display:none;">
+    <form id="modalForm" onsubmit="saveForm(event)">
+      <h3 id="modalTitle">新增</h3>
+      <div id="modalFields"></div>
+      <div class="modal-btns">
+        <button type="button" class="btn-cancel" onclick="closeModal()">取消</button>
+        <button type="submit" class="btn-save">儲存</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    let currentTab = 'books';
+    let editingId = null;
+    document.querySelectorAll('.sidebar-menu li').forEach(li => {
+      li.addEventListener('click', () => {
+        document.querySelectorAll('.sidebar-menu li').forEach(l => l.classList.remove('active'));
+        li.classList.add('active');
+        currentTab = li.dataset.tab;
+        document.querySelectorAll('.admin-panel').forEach(p => p.style.display = 'none');
+        document.getElementById('panel-' + currentTab).style.display = 'block';
+        loadData();
+      });
+    });
+    async function loadData() {
+      if (currentTab === 'books') loadBooks();
+      else if (currentTab === 'members') loadMembers();
+      else if (currentTab === 'orders') loadOrders();
+      else if (currentTab === 'users') loadUsers();
+    }
+    async function loadBooks() {
+      const r = await fetch('/api/admin/books');
+      const d = await r.json();
+      document.getElementById('booksTable').innerHTML = d.map(b => `<tr><td>${b.name}</td><td>${b.category||''}</td><td>${b.author||''}</td><td>${b.price}</td><td>${b.stock}</td><td class="actions"><button class="btn-edit" onclick="editRow('books','${b.id}')">編輯</button><button class="btn-del" onclick="deleteRow('books','${b.id}')">刪除</button></td></tr>`).join('');
+    }
+    async function loadMembers() {
+      const r = await fetch('/api/admin/members');
+      const d = await r.json();
+      document.getElementById('membersTable').innerHTML = d.map(m => `<tr><td>${m.name}</td><td>${m.phone||''}</td><td>${m.email||''}</td><td>${m.points||0}</td><td>${(m.createdAt||'').split('T')[0]}</td><td class="actions"><button class="btn-edit" onclick="editRow('members','${m.id}')">編輯</button><button class="btn-del" onclick="deleteRow('members','${m.id}')">刪除</button></td></tr>`).join('');
+    }
+    async function loadOrders() {
+      const r = await fetch('/api/admin/orders');
+      const d = await r.json();
+      document.getElementById('ordersTable').innerHTML = d.map(o => `<tr><td>${o.id}</td><td>${(o.createdAt||'').replace('T',' ').slice(0,16)}</td><td>${o.cashier||''}</td><td>${o.total}</td><td>${(o.items||[]).length}</td></tr>`).join('');
+    }
+    async function loadUsers() {
+      const r = await fetch('/api/admin/users');
+      const d = await r.json();
+      document.getElementById('usersTable').innerHTML = d.map(u => `<tr><td>${u.username}</td><td>${u.role}</td><td>${(u.createdAt||'').split('T')[0]}</td><td class="actions"><button class="btn-edit" onclick="editRow('users','${u.id}')">編輯</button><button class="btn-del" onclick="deleteRow('users','${u.id}')">刪除</button></td></tr>`).join('');
+    }
+    const fields = {
+      books: '<input name="name" placeholder="書名" required><input name="author" placeholder="作者"><input name="category" placeholder="分類"><input name="price" type="number" placeholder="定價" required><input name="stock" type="number" placeholder="庫存" required>',
+      members: '<input name="name" placeholder="姓名" required><input name="phone" placeholder="電話"><input name="email" placeholder="Email"><input name="points" type="number" placeholder="積分" value="0">',
+      users: '<input name="username" placeholder="帳號" required><input name="password" placeholder="密碼（留空不修改）"><select name="role"><option value="staff">員工</option><option value="admin">管理員</option></select>'
+    };
+    function openModal(type) { editingId = null; document.getElementById('modalTitle').textContent = '新增'; document.getElementById('modalFields').innerHTML = fields[type]; document.getElementById('modal').style.display = 'flex'; }
+    async function editRow(type, id) {
+      const r = await fetch('/api/admin/' + type);
+      const d = await r.json();
+      const it = d.find(i => i.id == id);
+      if (!it) return;
+      editingId = id;
+      document.getElementById('modalTitle').textContent = '編輯';
+      if (type === 'books') {
+        document.getElementById('modalFields').innerHTML = fields.books;
+        document.querySelector('[name="name"]').value = it.name || '';
+        document.querySelector('[name="author"]').value = it.author || '';
+        document.querySelector('[name="category"]').value = it.category || '';
+        document.querySelector('[name="price"]').value = it.price || '';
+        document.querySelector('[name="stock"]').value = it.stock || '';
+      } else if (type === 'members') {
+        document.getElementById('modalFields').innerHTML = '<input name="name" value="' + (it.name||'') + '" required><input name="phone" value="' + (it.phone||'') + '"><input name="email" value="' + (it.email||'') + '"><input name="points" type="number" value="' + (it.points||0) + '">';
+      } else if (type === 'users') {
+        document.getElementById('modalFields').innerHTML = '<input name="username" value="' + (it.username||'') + '" required><input name="password" placeholder="留空不修改"><select name="role"><option value="' + (it.role||'staff') + '">' + (it.role==='admin'?'管理員':'員工') + '</option><option value="admin">管理員</option><option value="staff">員工</option></select>';
+      }
+      document.getElementById('modal').style.display = 'flex';
+    }
+    function closeModal() { document.getElementById('modal').style.display = 'none'; }
+    async function saveForm(e) {
+      e.preventDefault();
+      const fd = new FormData(document.getElementById('modalForm'));
+      const body = Object.fromEntries(fd.entries());
+      const method = editingId ? 'PUT' : 'POST';
+      const url = editingId ? '/api/admin/' + currentTab + '/' + editingId : '/api/admin/' + currentTab;
+      await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+      closeModal();
+      loadData();
+    }
+    async function deleteRow(type, id) { if (confirm('確定刪除？')) { await fetch('/api/admin/' + type + '/' + id, { method: 'DELETE' }); loadData(); } }
+    loadData();
+  </script>
+</body>
+</html>
